@@ -1,0 +1,1 @@
+This is project on sign language detection in Real time using Open CV and Deep Learning.
