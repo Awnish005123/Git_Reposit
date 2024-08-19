@@ -8,13 +8,13 @@ import os
 
 # Change the Current Directory
 Dir = r'C:\Users\Admin\OneDrive - University at Buffalo\Documents\2. Projects\My Projects\SL_Recog'
-os.chdir(Dir)
+#os.chdir(Dir)
 
 # Function to capture images
 def capture_images(symbol):
     # Directory to save images
-    save_dir = f'symbols/{symbol}/'
-    if not os.path.exists(save_dir):
+    save_dir = Dir + f'symbols/{symbol}/'
+    if not os.path.exists(save_dir): # this line will check if the the path not exists, it will make a path.
         os.makedirs(save_dir)
 
     # Initialize webcam
@@ -24,11 +24,13 @@ def capture_images(symbol):
     image_count = 0
 
     while True:
-        ret, frame = cap.read()
+        ret,frame = cap.read()  # here, ret is a boolean variable to check if the frame,captured or not.
         cv2.imshow('Capture', frame)
         print("Press 's' to save images.")
 
-        key = cv2.waitKey(1) & 0xFF
+        key = cv2.waitKey(1) & 0xFF # cv2.waitKey(1), this ensures that the keys need to be pressed for one microsecends to
+                                    # capture an image.'& 0xFF' part ensures compatibility across different systems, 
+                                    # particularly with 64-bit systems. 
 
         # Press 'S' to save image
         if key == ord('s'):
@@ -44,8 +46,8 @@ def capture_images(symbol):
         elif key == ord('t') or key == ord('T'):
             break
 
-    cap.release()
-    cv2.destroyAllWindows()
+    cap.release()               # Release the video capture initiated initiated early in line 21.
+    cv2.destroyAllWindows()     # To destroy all the window used to display the image in the line 28.
 
 # Main function to capture images for different symbols
 def main():
@@ -62,5 +64,5 @@ def main():
             break
     print('Finished capturing images.')
 
-if __name__ == "__main__":
+if __name__ == "__main__": # here, only the main fuction is executed.
     main()
