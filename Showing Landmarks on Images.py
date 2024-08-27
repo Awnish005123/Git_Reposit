@@ -4,7 +4,7 @@
     to taking the whole image and then performing classification.
 '''
 
-#### In this code we are jsut drawing land marks on the images and displaying them ####
+#### In this code we are just drawing land marks on the images and displaying them ####
 
 # create Dataset
 import mediapipe as mp
@@ -31,10 +31,12 @@ for dir_ in os.listdir(Data_dir)[:1]:
             for hand_landmarks in results.multi_hand_landmarks:
                 mp_drawing.draw_landmarks(
                     img_rgb, # image to draw.
-                    hand_landmarks, # model output.
-                    mp_hands.HAND_CONNECTIONS, # hand_connection.
-                    mp_drawing_styles.get_default_hand_landmarks_style(),
-                    mp_drawing_styles.get_default_hand_connections_style())
+                    hand_landmarks, # draw the landmarks on the images.
+                    mp_hands.HAND_CONNECTIONS, # draw the connection between dots to form the figure, resembling to hands.
+                    mp_drawing_styles.get_default_hand_landmarks_style(), #  This function provides the default style (like color, thickness) 
+                                                                          #  for drawing the landmarks (the dots).
+                    mp_drawing_styles.get_default_hand_connections_style()) # This function provides the default style for 
+                                                                            # drawing the connections between landmarks (the lines). 
         plt.figure() # It's useful when you want to create multiple figures and need a fresh canvas for each one.
         plt.imshow(img_rgb)
 plt.show()
