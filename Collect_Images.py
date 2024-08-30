@@ -51,9 +51,8 @@ def capture_images(symbol):
 
 # Main function to capture images for different symbols
 def main():
-    symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'
-               ,'Hello','Thumbsup','Thank_You',
-               'Together','Help','I_Love_You','One','two','Three','Four','five']
+    symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H','Hello', 'I','J'
+               ,'Thumbsup']
 
     for symbol in symbols:
         print(f'Capturing images for symbol: {symbol}')
