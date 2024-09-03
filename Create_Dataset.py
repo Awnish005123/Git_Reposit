@@ -82,12 +82,19 @@ for key,values in dataset.items():
 # Print the data to see its contents
 print(df.head(10))
 
-list_length = [len(sub_list) for sub_list in df['data']]
-Min_length = max(list_length)
-Max_length = max(list_length)
+# one row comprises a single list, it will give csv in which the list fits in one cell.
+df.to_csv('sl_dataset.csv',index=False )
 
-for i in list_length:
-    if i != 42 :
-        print(i)
+# Create a DataFrame where each element in the list becomes its own column
+df_features = pd.DataFrame(df['data'].tolist(), index=df.index) # index will add index to col.
+print(df_features.head(10))
 
+# Concatenate the new DataFrame with the output column
+df_final = pd.concat([df_features, df['labels']], axis=1)
+
+# Print the data to see its contents
+print(df_final.head(10))
+
+# one row comprises a single list, it will give csv in which the list fits in one cell.
+df.to_csv('sl_dataset_final.csv',index=False )
 
